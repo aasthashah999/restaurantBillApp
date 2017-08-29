@@ -14,6 +14,17 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         //Adding Gradient colors in the backgroud as CALayer
         super.viewDidLoad()
         myRestaurantBill.delegate = self
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.frame
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor(red: 220/255.5, green: 245/255.5, blue: 246/255.5, alpha: 1.0).cgColor,UIColor(red: 194/255.5, green: 250/255.5, blue: 250/255.5, alpha: 1.0).cgColor]
+        gradientLayer.locations = [0.0, 0.2, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y:0.0)
+        self.view.layer.addSublayer(gradientLayer)
+        let background = UIView(frame: gradientLayer.frame)
+        
+        background.layer.addSublayer(gradientLayer)
+        view.insertSubview(background, at: 0)
+        myRestaurantBill.delegate = self
         //label declarations for quantity, line total, food total, tip, tax, and final total
     }
     
